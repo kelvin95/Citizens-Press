@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ImageDownloader.h"
 
-@interface PhotoFeedViewController : UIViewController
+
+@interface PhotoFeedViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, ImageDownloaderProtocol>
+
+
+@property (strong, nonatomic) UITableView *tableView;
+@property (strong, nonatomic) UIView *view;
+@property (assign, nonatomic) BOOL isLoading;
+@property (strong, nonatomic) NSMutableDictionary *indexPathsOfPhotoKeys;
 
 @end

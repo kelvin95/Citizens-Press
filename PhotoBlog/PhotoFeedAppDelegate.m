@@ -7,12 +7,29 @@
 //
 
 #import "PhotoFeedAppDelegate.h"
+#import "PhotoFeedViewController.h"
+#import "PhotoFeedNavigationViewController.h"
+
 
 @implementation PhotoFeedAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
+    PhotoFeedViewController *pfvc = [[PhotoFeedViewController alloc]init];
+    UINavigationController *navController = [[PhotoFeedNavigationViewController alloc]initWithRootViewController:pfvc];
+    [navController.navigationBar setBarTintColor:[UIColor colorWithRed:8/255. green:37/255. blue:103/255. alpha:1]];
+    [navController.navigationBar setTintColor:[UIColor whiteColor]];
+    navController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
+    //[navController.navigationBar setBackgroundColor:[UIColor blueColor]];
+    //[navController.navigationBar setBackgroundColor:[UIColor colorWithRed:8/255. green:37/255. blue:103/255. alpha:1]];
+    //navController.navigationBar.tintColor = [UIColor blackColor];
+    
+    
+    self.window.rootViewController = navController;
+    [self.window addSubview:self.window.rootViewController.view];
+    
+    [self.window makeKeyAndVisible];
     return YES;
 }
 							
